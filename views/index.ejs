@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
@@ -23,15 +23,6 @@
           <a class="navbar-item">
             Home
           </a>
-
-          <a class="navbar-item">
-            3-Day
-          </a>
-
-          <a class="navbar-item">
-            7-Day
-          </a>
-
         </div>
 
         <div class="navbar-end">
@@ -50,7 +41,7 @@
     <section class="section">
       <h1 class="title has-text-centered">express-weather</h1>
       <h2 class="subtitle has-text-centered">
-        An easy way to view weather information for <strong>your</strong> city.
+        An easy way to view current weather information for <strong>your</strong> city.
       </h2>
 
       <form id="zipForm">
@@ -70,7 +61,7 @@
       <div class="is-flex is-justify-content-space-around mt-6">
           <div class="image_desc">
             <figure class="image is-128x128">
-              <img id="icon" src="<%= `https://openweathermap.org/img/wn/${weather.icon}@2x.png`%>"/>
+              <img alt="weather icon" id="icon" src="<%= `https://openweathermap.org/img/wn/${weather.icon}@2x.png`%>"/>
             </figure>
 
             <h1 id="description" class="has-text-centered"><%= weather.description %></h1>

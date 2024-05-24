@@ -1,3 +1,4 @@
+// Access DOM elements to manipulate their content
 const zipForm = document.querySelector('#zipForm')
 const cityName = document.querySelector('#cityName')
 const timeFetched = document.querySelector('#timeFetched')
@@ -13,14 +14,17 @@ const wind = document.querySelector('#windSpeed')
 const maxTemp = document.querySelector('#maxTemp')
 const minTemp = document.querySelector('#minTemp')
 
+// Global Zip Code Value, default is 10017
 let currentZip = 10017;
 
+
+// Fetch data from the server and update the DOM elements
 const updateWeather = async (zipcode) => {
     const response = await fetch(`/weather/${zipcode}`)
     const data = await response.json();
     cityName.innerText = data.cityName;
     timeFetched.innerText = `Updated at ${data.timeFetched}`;
-    icon.src = `http://openweathermap.org/img/wn/${data.icon}.png`;
+    icon.src = `https://openweathermap.org/img/wn/${data.icon}.png`;
     weatherDescription.innerText = data.description;
     temp.innerText = `Temperature: ${data.temperature} °F`;
     feelsLike.innerText = `Feels Like: ${data.feelsLike} °F`;
@@ -30,6 +34,7 @@ const updateWeather = async (zipcode) => {
     minTemp.innerText = `Min Temp: ${data.min} °F`;
 }
 
+// Zip Code Form Event Listener. Press enter to submit
 zipForm.addEventListener("submit", async (e) => {
     e.preventDefault()
     currentZip = e.target[0].value;
@@ -37,6 +42,7 @@ zipForm.addEventListener("submit", async (e) => {
     await updateWeather(currentZip);
 })
 
+// Refresh Button Event Listener
 refreshButton.addEventListener("click", async () => {
     await updateWeather(currentZip);
 })

@@ -3,6 +3,7 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script defer src="/javascripts/main.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -36,7 +37,7 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
+              <a class="button is-primary" id="refreshButton">
                 <strong>Refresh</strong>
               </a>
             </div>
@@ -52,34 +53,36 @@
         An easy way to view weather information for <strong>your</strong> city.
       </h2>
 
-      <input
-              class="input is-large mt-6"
-              type="text"
-              placeholder="Enter your city zip code..."
-              id="zipInput"
-      />
+      <form id="zipForm">
+        <input
+                class="input is-large mt-6"
+                type="text"
+                placeholder="Enter your city zip code..."
+                id="zipInput"
+        />
+      </form>
     </section>
 
     <section class="section">
-      <h1 class="title has-text-centered"><%= weather.cityName %></h1>
-      <h2 class="has-text-centered">Fetched at <%= weather.timeFetched %></h2>
+      <h1 id="cityName" class="title has-text-centered"><%= weather.cityName %></h1>
+      <h2 id="timeFetched" class="has-text-centered">Updated at <%= weather.timeFetched %></h2>
 
       <div class="is-flex is-justify-content-space-around mt-6">
           <div class="image_desc">
             <figure class="image is-128x128">
-              <img src="<%= `https://openweathermap.org/img/wn/${weather.icon}@2x.png`%>"/>
+              <img id="icon" src="<%= `https://openweathermap.org/img/wn/${weather.icon}@2x.png`%>"/>
             </figure>
 
-            <h1 class="has-text-centered"><%= weather.description %></h1>
+            <h1 id="description" class="has-text-centered"><%= weather.description %></h1>
           </div>
 
           <div class="weather_info">
-            <p>Temperature: <%= weather.temperature %> &deg;</p>
-            <p>Feels Like: <%= weather.feelsLike%> &deg;</p>
-            <p>Max Temp: <%= weather.max %> &deg;</p>
-            <p>Min Temp: <%= weather.min %> &deg;</p>
-            <p>Humidity: <%= weather.humidity %> %</p>
-            <p>Wind Speed: <%= weather.windSpeed %> MPH</p>
+            <p id="temperature">Temperature: <%= weather.temperature %> &deg;F</p>
+            <p id="feelsLike">Feels Like: <%= weather.feelsLike%> &deg;F</p>
+            <p id="maxTemp">Max Temp: <%= weather.max %> &deg;F</p>
+            <p id="minTemp">Min Temp: <%= weather.min %> &deg;F</p>
+            <p id="humidity">Humidity: <%= weather.humidity %> %</p>
+            <p id="windSpeed">Wind Speed: <%= weather.windSpeed %> MPH</p>
           </div>
       </div>
     </section>

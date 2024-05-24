@@ -12,10 +12,6 @@ const getCurrentWeather = async (zipCode = 10017) => {
     const date = new Date(unixTimestamp * 1000); // Multiply by 1000 to convert seconds to milliseconds
 
     const timeString = date.toLocaleTimeString();
-    console.log(timeString);
-// Output example: 6:12:48 AM (The exact format may vary based on the locale and time settings)
-
-
 
     const processedWeatherData = {
         temperature: currentWeatherData.main.temp,

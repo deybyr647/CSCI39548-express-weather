@@ -1,11 +1,23 @@
 require('dotenv').config()
 
 const key = process.env.OPENWEATHERMAP_API_KEY;
-
 const axios = require('axios');
 
+console.log(key)
+
 const getCurrentWeather = async (zipCode = 10017) => {
-    const req = await axios(`https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${key}&lang=en&units=imperial`);
+    const reqConfig = {
+        method: "get",
+        url:"https://api.openweathermap.org/data/2.5/weather",
+        params: {
+            zip: zipCode,
+            appid: key,
+            lang: "en",
+            units: "imperial"
+        }
+    }
+
+    const req = await axios(reqConfig);
     const currentWeatherData = req.data;
 
     const unixTimestamp = currentWeatherData.dt;
